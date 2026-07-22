@@ -1,0 +1,1539 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR" data-v="2">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resultados — Dr. Thiago Belfort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wine:       #6B0F1A;
+      --wine-deep:  #3D0509;
+      --wine-mid:   #8C1C26;
+      --gold:       #C9A84C;
+      --gold-light: #E0C97A;
+      --black:      #0A0A0A;
+      --charcoal:   #111111;
+      --dark:       #1C1C1C;
+      --gray:       #999999;
+      --white:      #FFFFFF;
+      --off-white:  #F5F0EA;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--charcoal); color: var(--off-white); }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--wine); border-radius: 4px; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--black);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      width: 220px;
+      height: 64px;
+      background-image: url('img/logo.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: contain;
+      flex-shrink: 0;
+    }
+
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a {
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.25s;
+      position: relative;
+      padding-bottom: 4px;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    nav a:hover { color: var(--off-white); }
+    nav a:hover::after { width: 100%; }
+    nav a.active { color: var(--gold); }
+    nav a.active::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      background: var(--wine);
+      color: var(--off-white) !important;
+      border-radius: 2px;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--wine-mid) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 100px 20px 80px;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--black) 0%, var(--charcoal) 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(107,15,26,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .eyebrow-line {
+      width: 40px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .eyebrow-line.right { background: linear-gradient(to left, transparent, var(--gold)); }
+    .eyebrow span {
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.6rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+
+    .hero p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      max-width: 480px;
+      margin: 0 auto 50px;
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 6px;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 20px;
+    }
+    .filter-btn {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 9px 20px;
+      border: 1px solid rgba(201,168,76,0.25);
+      background: transparent;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.25s;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+    }
+    .filter-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+    .filter-btn.active { background: var(--wine); border-color: var(--wine); color: var(--off-white); }
+
+    /* ── GRID ── */
+    .cases-section {
+      padding: 70px 30px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    .case-card {
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+    }
+    .case-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,168,76,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    /* ── PHOTO ── */
+    .case-photo {
+      position: relative;
+      width: 100%;
+      background-color: var(--black);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .case-photo.wide  { aspect-ratio: 720/433; }
+    .case-photo.tall  { aspect-ratio: 720/720; }
+    .case-photo.solo  { aspect-ratio: 500/627; }
+
+    .case-photo-1 { background-image: url('img/case1.jpg'); }
+    .case-photo-2 { background-image: url('img/case2.jpg'); }
+    .case-photo-3 { background-image: url('img/case3.jpg'); }
+    .case-photo-4 { background-image: url('img/case4.jpg'); }
+    .case-photo-6 { background-image: url('img/case6.jpg'); }
+
+    /* Legenda ANTES/DEPOIS overlay */
+    .photo-labels {
+      position: absolute;
+      bottom: 12px;
+      left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 14px;
+      pointer-events: none;
+    }
+    .photo-labels span {
+      font-size: 0.6rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+    .lbl-before {
+      background: rgba(107,15,26,0.75);
+      color: var(--off-white);
+      border: 1px solid rgba(201,168,76,0.3);
+    }
+    .lbl-after {
+      background: rgba(0,0,0,0.55);
+      color: var(--gold-light);
+      border: 1px solid rgba(201,168,76,0.3);
+    }
+    .lbl-solo {
+      background: rgba(0,0,0,0.55);
+      color: var(--gold-light);
+      border: 1px solid rgba(201,168,76,0.3);
+      margin: 0 auto;
+    }
+    .photo-labels.center { justify-content: center; }
+
+    /* ── INFO ── */
+    .case-info {
+      padding: 22px 26px 26px;
+      border-top: 1px solid rgba(201,168,76,0.12);
+    }
+    .case-tag {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .case-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--off-white);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
+    .case-desc {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── VÍDEOS ── */
+    .videos-section {
+      background: var(--charcoal);
+      padding: 90px 30px;
+    }
+    .videos-wrap { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .videos-wrap > h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 1.5px;
+      margin-top: 12px;
+      margin-bottom: 14px;
+    }
+    .videos-wrap > p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto 50px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .video-card {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .video-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.35);
+    }
+    .video-card video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      background: var(--black);
+    }
+    .video-info {
+      padding: 18px 22px;
+      border-top: 1px solid rgba(201,168,76,0.12);
+      text-align: left;
+    }
+    .video-tag {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .video-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--off-white);
+      letter-spacing: 0.3px;
+    }
+
+    /* ── DEPOIMENTO ── */
+    .testimonial-section {
+      background: linear-gradient(180deg, var(--charcoal), var(--black));
+      padding: 70px 30px 90px;
+    }
+    .testimonial-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .testimonial-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 1.5px;
+      margin-top: 12px;
+    }
+
+    .testimonial-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 6px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .testimonial-photo {
+      width: 200px;
+      aspect-ratio: 500/610;
+      background-image: url('img/testimonial.jpg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 4px;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .testimonial-content .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      line-height: 0.5;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--off-white);
+      font-style: italic;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .testimonial-author {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* Google Badge */
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px;
+      padding: 10px 22px;
+      margin-top: 18px;
+    }
+    .google-logo-txt {
+      font-family: 'Arial', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: -0.5px;
+    }
+    .google-logo-txt span:nth-child(1) { color: #4285F4; }
+    .google-logo-txt span:nth-child(2) { color: #EA4335; }
+    .google-logo-txt span:nth-child(3) { color: #FBBC04; }
+    .google-logo-txt span:nth-child(4) { color: #4285F4; }
+    .google-logo-txt span:nth-child(5) { color: #34A853; }
+    .google-logo-txt span:nth-child(6) { color: #EA4335; }
+    .google-stars {
+      color: #FBBC04;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+    }
+    .google-info { font-size: 0.7rem; color: var(--off-white); letter-spacing: 0.5px; }
+    .google-info strong { color: var(--gold); font-weight: 600; }
+
+    /* Reviews Grid */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 50px;
+    }
+    .review-card {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 6px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .review-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.35); }
+    .review-stars {
+      color: #FBBC04;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--off-white);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--wine), var(--wine-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold);
+      font-size: 1.05rem;
+      font-weight: 600;
+      flex-shrink: 0;
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+    .review-name { font-size: 0.82rem; color: var(--off-white); font-weight: 500; }
+    .review-meta {
+      font-size: 0.62rem;
+      color: var(--gray);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* ── FORMULÁRIO ── */
+    .contact-section {
+      background: var(--charcoal);
+      padding: 90px 30px;
+      position: relative;
+    }
+    .contact-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    .contact-info h2 em { font-style: italic; color: var(--gold-light); }
+    .contact-info p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.85;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--off-white);
+      font-size: 0.82rem;
+      font-weight: 300;
+    }
+    .contact-icon {
+      width: 38px; height: 38px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--wine);
+      border: 1px solid rgba(201,168,76,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-icon svg { width: 16px; height: 16px; fill: var(--gold); }
+    .contact-item small {
+      display: block;
+      color: var(--gold);
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      font-weight: 500;
+    }
+
+    /* ── FORM ── */
+    .contact-form {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 6px;
+      padding: 40px 36px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--charcoal);
+      border: 1px solid rgba(201,168,76,0.15);
+      color: var(--off-white);
+      padding: 13px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      border-radius: 3px;
+      transition: border-color 0.25s, background 0.25s;
+      outline: none;
+    }
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: #191919;
+    }
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C9A84C' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: background 0.25s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .form-submit svg { width: 14px; height: 14px; fill: var(--black); }
+
+    .form-privacy {
+      font-size: 0.7rem;
+      color: var(--gray);
+      text-align: center;
+      margin-top: 14px;
+      font-weight: 300;
+    }
+    .form-privacy strong { color: var(--gold); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── EQUIPAMENTOS ── */
+    .tech-section {
+      background: linear-gradient(180deg, var(--black), var(--charcoal));
+      padding: 90px 30px;
+    }
+    .tech-wrap { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .tech-wrap > h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 1.5px;
+      margin-top: 12px;
+      margin-bottom: 14px;
+    }
+    .tech-wrap > p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto 50px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .tech-card {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 4px;
+      padding: 32px 24px;
+      text-align: left;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .tech-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.35);
+    }
+    .tech-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .tech-desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .tech-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      color: rgba(201,168,76,0.5);
+      letter-spacing: 3px;
+      margin-bottom: 6px;
+    }
+
+    /* ── COMO FUNCIONA ── */
+    .steps-section {
+      background: var(--charcoal);
+      padding: 90px 30px;
+    }
+    .steps-wrap { max-width: 1080px; margin: 0 auto; text-align: center; }
+    .steps-wrap > h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 1.5px;
+      margin-top: 12px;
+      margin-bottom: 50px;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .step {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      padding: 32px 22px;
+      text-align: left;
+      position: relative;
+    }
+    .step-num {
+      position: absolute;
+      top: -18px;
+      left: 22px;
+      width: 42px;
+      height: 42px;
+      background: var(--wine);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-top: 14px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    .step-desc {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      background: linear-gradient(180deg, var(--charcoal), var(--black));
+      padding: 90px 30px;
+    }
+    .faq-wrap { max-width: 820px; margin: 0 auto; }
+    .faq-wrap > .testimonial-header { margin-bottom: 40px; }
+    .faq-item {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 4px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .faq-item[open] { border-color: rgba(201,168,76,0.35); }
+    .faq-item summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: var(--off-white);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      transition: color 0.2s;
+    }
+    .faq-item summary:hover { color: var(--gold-light); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold);
+      font-size: 1.6rem;
+      font-weight: 300;
+      transition: transform 0.3s;
+      line-height: 1;
+      margin-left: 20px;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 24px 22px;
+      color: var(--gray);
+      font-size: 0.8rem;
+      line-height: 1.85;
+      font-weight: 300;
+      border-top: 1px solid rgba(201,168,76,0.08);
+      margin-top: 4px;
+      padding-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 0 30px 60px;
+    }
+    .divider-line { flex: 1; max-width: 200px; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.3)); }
+    .divider-line.right { background: linear-gradient(to left, transparent, rgba(201,168,76,0.3)); }
+    .divider-diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); opacity: 0.6; }
+
+    /* ── CTA ── */
+    .cta-section {
+      position: relative;
+      background: linear-gradient(135deg, var(--wine-deep) 0%, var(--wine) 50%, var(--wine-deep) 100%);
+      text-align: center;
+      padding: 90px 20px;
+      overflow: hidden;
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+    .cta-section p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 420px;
+      margin: 0 auto 40px;
+      line-height: 1.9;
+    }
+    .cta-section .eyebrow-line { background: linear-gradient(to right, transparent, rgba(201,168,76,0.6)); }
+    .cta-section .eyebrow-line.right { background: linear-gradient(to left, transparent, rgba(201,168,76,0.6)); }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 18px 44px;
+      background: var(--gold);
+      color: var(--black);
+      text-decoration: none;
+      border-radius: 2px;
+      font-weight: 600;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-cta svg { width: 16px; height: 16px; fill: var(--black); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 48px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--off-white);
+    }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.7rem; color: #444; letter-spacing: 1px; }
+
+    .case-card[data-hidden="true"] { display: none; }
+
+    @media (max-width: 768px) {
+      header { padding: 0 20px; height: 68px; }
+      .logo { width: 160px; height: 48px; }
+      .hero h1 { font-size: 2.4rem; }
+      .stats { gap: 32px; }
+      .cases-grid { grid-template-columns: 1fr; }
+      nav a:not(.nav-cta):not(.active) { display: none; }
+      .testimonial-card { grid-template-columns: 1fr; text-align: center; }
+      .testimonial-photo { margin: 0 auto; }
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo" role="img" aria-label="Dr. Thiago Belfort — Cirurgia Plástica"></div>
+  <nav>
+    <a href="#">Início</a>
+    <a href="#">Procedimentos</a>
+    <a href="#" class="active">Resultados</a>
+    <a href="#">Sobre</a>
+    <a href="https://wa.me/5581982798310" class="nav-cta">Agendar Consulta</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">
+    <div class="eyebrow-line"></div>
+    <span>Portfólio de Resultados</span>
+    <div class="eyebrow-line right"></div>
+  </div>
+  <h1>Sua Nova Versão,<br><em>Redesenhada com Precisão</em></h1>
+  <p>Cirurgia plástica corporal e mamária em Recife-PE, conduzida com técnica avançada, tecnologias associadas e resultados naturais que respeitam a individualidade de cada paciente.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">UFPE</div>
+      <div class="stat-label">Formação em Medicina</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">IMIP</div>
+      <div class="stat-label">Residência em Cirurgia Plástica</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">SBCP</div>
+      <div class="stat-label">Membro Titular</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CASOS -->
+<section class="cases-section">
+  <div class="cases-grid" id="casesGrid">
+
+    <div class="case-card" data-category="combinado">
+      <div class="case-photo case-photo-1 wide">
+        <div class="photo-labels"><span class="lbl-before">Antes</span><span class="lbl-after">Depois</span></div>
+      </div>
+      <div class="case-info">
+        <div class="case-tag">Lipoabdominoplastia + Mastopexia</div>
+        <div class="case-title">Reconstrução corporal pós-emagrecimento</div>
+        <p class="case-desc">Correção de flacidez abdominal e mamária com reposicionamento anatômico, devolvendo contorno e firmeza com naturalidade.</p>
+      </div>
+    </div>
+
+    <div class="case-card" data-category="combinado">
+      <div class="case-photo case-photo-2 tall">
+        <div class="photo-labels"><span class="lbl-before">Antes</span><span class="lbl-after">Depois</span></div>
+      </div>
+      <div class="case-info">
+        <div class="case-tag">Lipoabdominoplastia</div>
+        <div class="case-title">Harmonia entre torso e abdômen</div>
+        <p class="case-desc">Remodelação do abdômen com retirada de excessos e definição do contorno, resultado natural e proporcional.</p>
+      </div>
+    </div>
+
+    <div class="case-card" data-category="mamoplastia">
+      <div class="case-photo case-photo-3 tall">
+        <div class="photo-labels"><span class="lbl-before">Antes</span><span class="lbl-after">Depois</span></div>
+      </div>
+      <div class="case-info">
+        <div class="case-tag">Lipoaspiração</div>
+        <div class="case-title">Silhueta feminina redefinida</div>
+        <p class="case-desc">Lipoaspiração para redefinir o contorno corporal, com resultado natural, elegante e proporcional.</p>
+      </div>
+    </div>
+
+    <div class="case-card" data-category="abdominoplastia">
+      <div class="case-photo case-photo-4 wide">
+        <div class="photo-labels"><span class="lbl-before">Antes</span><span class="lbl-after">Depois</span></div>
+      </div>
+      <div class="case-info">
+        <div class="case-tag">Lipoabdominoplastia</div>
+        <div class="case-title">Correção de diástase e flacidez</div>
+        <p class="case-desc">Remoção do excesso de pele com tratamento da flacidez e definição do contorno abdominal, com mais segurança e naturalidade.</p>
+      </div>
+    </div>
+
+    <div class="case-card" data-category="lipoaspiracao">
+      <div class="case-photo case-photo-6 solo">
+        <div class="photo-labels center"><span class="lbl-solo">Resultado</span></div>
+      </div>
+      <div class="case-info">
+        <div class="case-tag">Lipo HD</div>
+        <div class="case-title">Abdômen com definição atlética</div>
+        <p class="case-desc">Técnica voltada para destacar a musculatura e construir um abdômen com aparência mais atlética e definida.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-diamond"></div>
+  <div class="divider-line right"></div>
+</div>
+
+<!-- EQUIPAMENTOS -->
+<section class="tech-section">
+  <div class="tech-wrap">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <span>Equipamentos de Ponta</span>
+      <div class="eyebrow-line right"></div>
+    </div>
+    <h2>Tecnologia Avançada Associada</h2>
+    <p>Recursos modernos aplicados com critério para elevar a segurança, o refinamento e a naturalidade dos resultados.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-num">01</div>
+        <div class="tech-name">Vaser</div>
+        <p class="tech-desc">Tecnologia ultrassônica que emulsifica a gordura com precisão, facilitando a remoção e favorecendo um contorno mais refinado.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-num">02</div>
+        <div class="tech-name">Quantum</div>
+        <p class="tech-desc">Radiofrequência aplicada de forma controlada para estimular a retração da pele e melhorar a adaptação ao novo contorno.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-num">03</div>
+        <div class="tech-name">Argoplasma</div>
+        <p class="tech-desc">Tecnologia associada à lipoaspiração para estimular a contração dos tecidos e melhorar a firmeza da pele.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-num">04</div>
+        <div class="tech-name">Morpheus</div>
+        <p class="tech-desc">Radiofrequência microagulhada que atua em camadas profundas da pele, estimulando colágeno e melhorando firmeza e textura.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-num">05</div>
+        <div class="tech-name">Ultrassom</div>
+        <p class="tech-desc">Recurso de imagem que permite visualizar estruturas internas em tempo real, trazendo mais controle em procedimentos cirúrgicos.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-num">06</div>
+        <div class="tech-name">FOTONA</div>
+        <p class="tech-desc">Um dos lasers mais modernos da estética médica, combina versatilidade e precisão para rejuvenescimento, firmeza e melhora global da pele.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VÍDEOS -->
+<section class="videos-section">
+  <div class="videos-wrap">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <span>Vídeos</span>
+      <div class="eyebrow-line right"></div>
+    </div>
+    <h2>Bastidores e Resultados em Movimento</h2>
+    <p>Conheça um pouco mais sobre o trabalho do Dr. Thiago Belfort através destes vídeos.</p>
+
+    <div class="videos-grid">
+      <div class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video1.mp4" type="video/mp4">
+        </video>
+        <div class="video-info">
+          <div class="video-tag">Vídeo 01</div>
+          <div class="video-title">Sobre o trabalho do Dr. Thiago</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video2.mp4" type="video/mp4">
+        </video>
+        <div class="video-info">
+          <div class="video-tag">Vídeo 02</div>
+          <div class="video-title">Cirurgia plástica com precisão</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video3.mp4" type="video/mp4">
+        </video>
+        <div class="video-info">
+          <div class="video-tag">Vídeo 03</div>
+          <div class="video-title">Depoimento em vídeo</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video4.mp4" type="video/mp4">
+        </video>
+        <div class="video-info">
+          <div class="video-tag">Vídeo 04</div>
+          <div class="video-title">Resultado pós-operatório</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video5.mp4" type="video/mp4">
+        </video>
+        <div class="video-info">
+          <div class="video-tag">Vídeo 05</div>
+          <div class="video-title">Transformação real</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTO -->
+<section class="testimonial-section">
+  <div class="testimonial-header">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <span>Depoimentos</span>
+      <div class="eyebrow-line right"></div>
+    </div>
+    <h2>Quem passou, recomenda</h2>
+    <div class="google-badge">
+      <div class="google-logo-txt"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+      <div class="google-stars">★★★★★</div>
+      <div class="google-info"><strong>5,0</strong> — 131 avaliações</div>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Dr. Thiago é simplesmente diferenciado. Extremamente competente, atencioso e passa uma segurança absurda desde a primeira consulta. Ele entregou exatamente o que prometeu e ainda superou minhas expectativas. Não é só estética, é autoestima lá em cima!"</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div>
+          <div class="review-name">Marcela A.</div>
+          <div class="review-meta">Google Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"A minha cirurgia com o Dr. Thiago Belfort foi um sonho realizado. Profissional maravilhoso e de uma competência impecável. Fiz minha mamoplastia e minha autoestima hoje é alta, agradeço de coração ao profissionalismo do Dr. Thiago."</p>
+      <div class="review-author">
+        <div class="review-avatar">R</div>
+        <div>
+          <div class="review-name">Rita de Cássia</div>
+          <div class="review-meta">Mamoplastia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Fiz Lipoabdominoplastia há 4 anos com Dr. Thiago e escolhi muito bem o médico. Explicou super bem o processo, senti confiança e meu pós foi tranquilo demais. Resultado acima do esperado. Tenho só a agradecer este profissional humano e excelente!"</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div>
+          <div class="review-name">Minerva Araújo</div>
+          <div class="review-meta">Lipoabdominoplastia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Dr. Thiago é maravilhoso! Já operei duas vezes com ele, lipo e redução de mamas — ambas foram executadas com muito sucesso e maestria. Ele tem uma equipe excelente, o pré e pós-operatório foram essenciais. Recomendadíssimo!"</p>
+      <div class="review-author">
+        <div class="review-avatar">T</div>
+        <div>
+          <div class="review-name">Thais R.</div>
+          <div class="review-meta">Lipo + Mamoplastia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Foi o melhor cirurgião que me atendeu, muito atencioso. Um cuidado enorme no pós-cirúrgico. Cicatriz tão fina quanto uma linha, e a melhor parte foram os seios. Fiz lipo com abdominoplastia e silicone. Só tenho a agradecer!"</p>
+      <div class="review-author">
+        <div class="review-avatar">J</div>
+        <div>
+          <div class="review-name">Juliana dos Santos</div>
+          <div class="review-meta">Cirurgias Combinadas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Não tenho palavras para agradecer ao Dr. Thiago e toda a sua equipe pelo cuidado, carinho e profissionalismo. Desde a primeira consulta até o pós-operatório, me senti acolhida, respeitada e completamente segura. Me senti cuidada como parte da família."</p>
+      <div class="review-author">
+        <div class="review-avatar">J</div>
+        <div>
+          <div class="review-name">Jacqueline</div>
+          <div class="review-meta">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-card">
+    <div class="testimonial-photo"></div>
+    <div class="testimonial-content">
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">Tenho 64 anos e há um ano fiz a abdominoplastia com esse cirurgião maravilhoso e competente. O resultado ficou muito bom! Só tenho a agradecer a Deus em primeiro lugar, ao Dr. Thiago, à fisio maravilhosa Thays e a toda a equipe. Amei o resultado!</p>
+      <div class="testimonial-author">— Edna A., 64 anos • Abdominoplastia</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="steps-section">
+  <div class="steps-wrap">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <span>Como Funciona</span>
+      <div class="eyebrow-line right"></div>
+    </div>
+    <h2>Passo a passo até a sua cirurgia</h2>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Primeiro Contato</div>
+        <p class="step-desc">Entre em contato pelo WhatsApp e converse com a equipe do Dr. Thiago. Tire suas dúvidas iniciais sem compromisso.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Avaliação Personalizada</div>
+        <p class="step-desc">Consulta completa presencial: análise da sua anatomia, escuta dos seus objetivos e proposta de planejamento cirúrgico individualizado.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Preparação e Cirurgia</div>
+        <p class="step-desc">Exames pré-operatórios, orientações detalhadas e procedimento conduzido com técnica avançada e tecnologias associadas.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Pós-Operatório</div>
+        <p class="step-desc">Acompanhamento próximo e cuidado contínuo com apoio da equipe multidisciplinar até o resultado final.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="contact-section" id="agendar">
+  <div class="contact-wrap">
+
+    <div class="contact-info">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span>Agende sua Avaliação</span>
+      </div>
+      <h2>Agende sua avaliação <em>com 1 click</em></h2>
+      <p>Consulta completa pelo WhatsApp: tiraremos todas as suas dúvidas, com sensibilidade sobre o quão importante é este momento. Os valores podem ser pagos de forma parcelada.</p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          </div>
+          <div>
+            <small>WhatsApp</small>
+            (81) 98279-8310
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <small>Endereço</small>
+            Av. República do Líbano, 251<br>Torre 3 — Sala 1106, Pina, Recife-PE
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          </div>
+          <div>
+            <small>Horário</small>
+            Segunda a Sexta — 08h às 18h
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="return sendToWhatsapp(event)">
+      <div class="form-group">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" required placeholder="Seu nome" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telefone">WhatsApp</label>
+          <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="procedimento">Procedimento de interesse</label>
+        <select id="procedimento" name="procedimento" required>
+          <option value="">Selecione uma opção</option>
+          <option value="Lipoabdominoplastia">Lipoabdominoplastia</option>
+          <option value="Mamoplastia de Aumento">Mamoplastia de Aumento</option>
+          <option value="Mastopexia">Mastopexia</option>
+          <option value="Lipo HD">Lipo HD</option>
+          <option value="Lipoenxertia Glútea">Lipoenxertia Glútea (Ultrassom)</option>
+          <option value="Cirurgias Combinadas">Cirurgias Combinadas</option>
+          <option value="Outro / Ainda em dúvida">Outro / Ainda em dúvida</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mensagem">Mensagem (opcional)</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o que você deseja..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">
+        <svg viewBox="0 0 24 24"><path d="M11.99 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.996l6.306-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.617 0 11.99 0z"/></svg>
+        Enviar para o WhatsApp
+      </button>
+
+      <p class="form-privacy">Seus dados são <strong>confidenciais</strong> e usados apenas para contato.</p>
+    </form>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-wrap">
+    <div class="testimonial-header">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span>Perguntas Frequentes</span>
+        <div class="eyebrow-line right"></div>
+      </div>
+      <h2>Dúvidas mais comuns</h2>
+    </div>
+
+    <details class="faq-item">
+      <summary>Como funciona a avaliação com o Dr. Thiago Belfort?</summary>
+      <div class="faq-answer">A avaliação é feita de forma completa e presencial na clínica em Recife. É o momento em que analisamos sua anatomia, ouvimos seus objetivos e apresentamos um planejamento cirúrgico individualizado, esclarecendo todas as suas dúvidas com transparência.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Quais procedimentos o Dr. Thiago Belfort realiza?</summary>
+      <div class="faq-answer">Lipoabdominoplastia, Mamoplastia de Aumento, Mastopexia, Lipo HD, Lipoenxertia Glútea Guiada por Ultrassom e Cirurgias Combinadas. Todos com foco em cirurgia corporal e mamária feminina.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Como funciona o suporte no pré e pós-operatório?</summary>
+      <div class="faq-answer">Você tem acompanhamento próximo em todas as etapas: orientações detalhadas antes da cirurgia, suporte da equipe multidisciplinar (incluindo fisioterapia especializada) durante a recuperação e retornos regulares até o resultado final.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Quais tecnologias podem ser associadas às cirurgias?</summary>
+      <div class="faq-answer">Conforme a indicação, associamos Vaser, Quantum, Argoplasma, Morpheus, Ultrassom transoperatório e FOTONA. Cada tecnologia é utilizada com critério para elevar segurança e refinamento do resultado.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>O Dr. Thiago Belfort atende pacientes estrangeiras ou de outros estados?</summary>
+      <div class="faq-answer">Sim. Recebemos pacientes de diversos estados brasileiros e do exterior. Podemos organizar uma pré-avaliação online antes da viagem e orientar sobre hospedagem próxima à clínica em Recife-PE.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>É possível parcelar o pagamento?</summary>
+      <div class="faq-answer">Sim, oferecemos condições facilitadas de pagamento parcelado. Os valores e formas de parcelamento serão apresentados durante a consulta de avaliação, conforme o procedimento indicado.</div>
+    </details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="eyebrow">
+    <div class="eyebrow-line"></div>
+    <span>Agende sua Consulta</span>
+    <div class="eyebrow-line right"></div>
+  </div>
+  <h2>Pronta para sua transformação?</h2>
+  <p>Agende uma consulta e descubra qual procedimento é ideal para realçar a sua beleza com segurança e naturalidade.</p>
+  <a href="https://wa.me/5581982798310" class="btn-cta">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M11.99 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.996l6.306-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.617 0 11.99 0zm.01 21.818a9.818 9.818 0 01-5.002-1.368l-.36-.213-3.714.974.99-3.62-.233-.372A9.818 9.818 0 012.182 12c0-5.422 4.41-9.818 9.818-9.818 5.409 0 9.818 4.396 9.818 9.818 0 5.422-4.409 9.818-9.818 9.818z"/>
+    </svg>
+    Falar com o Dr. Thiago
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dr. <span>Thiago Belfort</span> — Cirurgia Plástica</div>
+  <p>CRM 14681/PE &nbsp;|&nbsp; RQE Nº 2049 &nbsp;|&nbsp; Membro da SBCP</p>
+  <p>&copy; 2026 — Todos os direitos reservados</p>
+</footer>
+
+<script>
+  function filterCases(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.case-card').forEach(card => {
+      const match = category === 'all' || card.dataset.category === category;
+      card.dataset.hidden = match ? 'false' : 'true';
+    });
+  }
+
+  const WHATSAPP_NUMBER = '5581982798310'; // Dr. Thiago Belfort — (81) 98279-8310
+  const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwt0kECckccWZVe9oG6CdhxQBiD8QISoz7MhjB4Vzm8frNNwj9D-WeUwgmEY942LSzPWQ/exec';
+
+  function sendToWhatsapp(e) {
+    e.preventDefault();
+    const dados = {
+      nome:         document.getElementById('nome').value.trim(),
+      telefone:     document.getElementById('telefone').value.trim(),
+      email:        document.getElementById('email').value.trim(),
+      procedimento: document.getElementById('procedimento').value,
+      mensagem:     document.getElementById('mensagem').value.trim(),
+      origem:       'Site — Dr. Thiago Belfort'
+    };
+
+    // 1) Envia para a planilha do Google (não bloqueia se falhar)
+    if (SHEETS_WEBHOOK && !SHEETS_WEBHOOK.startsWith('COLE_')) {
+      fetch(SHEETS_WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      }).catch(err => console.warn('Sheets:', err));
+    }
+
+    // 2) Abre o WhatsApp
+    const texto =
+      `Olá, Dr. Thiago! Gostaria de agendar uma consulta.\n\n` +
+      `*Nome:* ${dados.nome}\n` +
+      `*WhatsApp:* ${dados.telefone}\n` +
+      `*E-mail:* ${dados.email}\n` +
+      `*Procedimento de interesse:* ${dados.procedimento}` +
+      (dados.mensagem ? `\n\n*Mensagem:*\n${dados.mensagem}` : '');
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+    return false;
+  }
+
+  // Link "Agendar Consulta" do nav rola para o formulário
+  document.querySelectorAll('a.nav-cta').forEach(a => {
+    a.addEventListener('click', ev => {
+      ev.preventDefault();
+      document.getElementById('agendar').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
