@@ -1895,22 +1895,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.dataLayer = window.dataLayer || [];
 
   // Lazy load vídeos + GTM tracking
+  // Um <video> sem <source> não dispara o evento "play" ao clicar no botão nativo
+  // (não há mídia pra tocar), então escutamos "click"/"play" no próprio elemento
+  // e injetamos o <source> antes de chamar play().
   document.querySelectorAll('.video-card video[data-src]').forEach((v, i) => {
-    v.addEventListener('play', function once() {
+    let carregado = false;
+
+    function carregarEDarPlay() {
+      if (carregado) return;
+      carregado = true;
+
+      window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'video_play',
-        video_name: this.dataset.src.split('/').pop(),
+        video_name: v.dataset.src.split('/').pop(),
         video_position: i + 1
       });
-      if (this.querySelector('source')) return;
+
       const source = document.createElement('source');
-      source.src = this.dataset.src;
+      source.src = v.dataset.src;
       source.type = 'video/mp4';
-      this.appendChild(source);
-      this.load();
-      this.play();
-      this.removeEventListener('play', once);
-    });
+      v.appendChild(source);
+      v.load();
+      v.play().catch(() => {});
+    }
+
+    v.addEventListener('click', carregarEDarPlay);
+    v.addEventListener('play', carregarEDarPlay);
   });
 
   // GTM — clique em qualquer link do WhatsApp
