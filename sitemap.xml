@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://deploy-delta-tan-66.vercel.app/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://deploy-delta-tan-66.vercel.app/img/logo.png</image:loc>
+      <image:title>Dr. Thiago Belfort — Cirurgia Plástica</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://deploy-delta-tan-66.vercel.app/img/case1.jpg</image:loc>
+      <image:caption>Resultado Lipoabdominoplastia + Mastopexia — Recife</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://deploy-delta-tan-66.vercel.app/img/case2.jpg</image:loc>
+      <image:caption>Resultado Lipoabdominoplastia — Recife</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://deploy-delta-tan-66.vercel.app/img/case3.jpg</image:loc>
+      <image:caption>Resultado Lipoaspiração — Recife</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://deploy-delta-tan-66.vercel.app/img/case4.jpg</image:loc>
+      <image:caption>Resultado Lipoabdominoplastia frontal — Recife</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://deploy-delta-tan-66.vercel.app/img/case6.jpg</image:loc>
+      <image:caption>Resultado Lipo HD — Recife</image:caption>
+    </image:image>
+  </url>
+</urlset>
