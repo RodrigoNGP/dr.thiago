@@ -980,6 +980,37 @@
     }
     .form-privacy strong { color: var(--gold); font-weight: 500; }
 
+    /* Confirmação — não atende plano de saúde */
+    .form-confirm {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(107,15,26,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 4px;
+      padding: 16px 18px;
+      margin-bottom: 22px;
+    }
+    .form-confirm input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+    .form-confirm label {
+      font-size: 0.78rem;
+      color: var(--off-white);
+      line-height: 1.6;
+      font-weight: 400;
+      cursor: pointer;
+    }
+    .form-confirm label strong {
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
     @media (max-width: 900px) {
       .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; }
@@ -1715,6 +1746,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="form-group">
         <label for="mensagem">Mensagem (opcional)</label>
         <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o que você deseja..."></textarea>
+      </div>
+
+      <div class="form-confirm">
+        <input type="checkbox" id="confirmaParticular" name="confirmaParticular" required />
+        <label for="confirmaParticular">Estou ciente de que o <strong>Dr. Thiago Belfort não atende por planos de saúde/convênios</strong> — o atendimento é <strong>exclusivamente particular</strong>.</label>
       </div>
 
       <button type="submit" class="form-submit">
