@@ -1916,6 +1916,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return false;
   }
 
+  // Garante que o checkbox de confirmação sempre inicie desmarcado,
+  // mesmo se o navegador restaurar o estado do formulário (bfcache, F5, voltar)
+  const confirmaCheckbox = document.getElementById('confirmaParticular');
+  if (confirmaCheckbox) confirmaCheckbox.checked = false;
+  window.addEventListener('pageshow', () => {
+    if (confirmaCheckbox) confirmaCheckbox.checked = false;
+  });
+
   // Link "Agendar Consulta" do nav rola para o formulário
   window.dataLayer = window.dataLayer || [];
 
