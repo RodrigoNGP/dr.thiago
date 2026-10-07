@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://deploy-delta-tan-66.vercel.app/sitemap.xml
+Sitemap: https://drthiagobelfort.grupongp.cloud/sitemap.xml
