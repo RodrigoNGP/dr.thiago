@@ -860,6 +860,58 @@
       margin-bottom: 32px;
       font-weight: 300;
     }
+    /* Valores da consulta */
+    .consulta-box {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 6px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .consulta-titulo {
+      font-size: 0.62rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .consulta-precos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .consulta-preco {
+      background: var(--charcoal);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      padding: 16px;
+      text-align: center;
+    }
+    .consulta-preco small {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+    .consulta-preco strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .consulta-box p {
+      font-size: 0.8rem !important;
+      color: var(--gray);
+      line-height: 1.75 !important;
+      margin-bottom: 10px !important;
+    }
+    .consulta-box p:last-child { margin-bottom: 0 !important; }
+
     .contact-details {
       display: flex;
       flex-direction: column;
@@ -1679,6 +1731,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>Agende sua avaliação <em>com 1 click</em></h2>
       <p>Consulta completa pelo WhatsApp: tiraremos todas as suas dúvidas, com sensibilidade sobre o quão importante é este momento. <strong style="color:var(--gold-light);">Atendimento exclusivamente particular</strong> (não trabalhamos com SUS ou convênios). Valores podem ser pagos de forma parcelada.</p>
 
+      <div class="consulta-box">
+        <div class="consulta-titulo">Valor da Consulta</div>
+        <div class="consulta-precos">
+          <div class="consulta-preco">
+            <small>Presencial</small>
+            <strong>R$ 700</strong>
+          </div>
+          <div class="consulta-preco">
+            <small>Online</small>
+            <strong>R$ 400</strong>
+          </div>
+        </div>
+        <p>A consulta com o Dr. Thiago inclui uma avaliação completa do seu caso, esclarecimento de todas as suas dúvidas, planejamento da cirurgia e detalhamento de todos os custos envolvidos. O planejamento cirúrgico e o orçamento apresentados têm validade de 6 meses.</p>
+        <p>Nesse período, normalmente realizamos duas consultas pré-operatórias e pelo menos seis retornos após a cirurgia, além de avaliações extras sempre que necessário, sem custos adicionais. Todo esse acompanhamento faz parte do valor inicial da consulta, porque entendemos que cuidar da paciente vai muito além do dia da cirurgia.</p>
+      </div>
+
       <div class="contact-details">
         <div class="contact-item">
           <div class="contact-icon">
@@ -1799,6 +1867,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <details class="faq-item">
       <summary>O Dr. Thiago Belfort atende pacientes estrangeiras ou de outros estados?</summary>
       <div class="faq-answer">Sim. Recebemos pacientes de diversos estados brasileiros e do exterior. Podemos organizar uma pré-avaliação online antes da viagem e orientar sobre hospedagem próxima à clínica em Recife-PE.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Qual o valor da consulta?</summary>
+      <div class="faq-answer">A consulta presencial custa R$ 700,00 e a consulta online R$ 400,00. Ela inclui avaliação completa do caso, esclarecimento de dúvidas, planejamento da cirurgia e detalhamento de todos os custos. O planejamento e o orçamento têm validade de 6 meses, período que normalmente inclui duas consultas pré-operatórias e pelo menos seis retornos após a cirurgia, sem custos adicionais.</div>
     </details>
 
     <details class="faq-item">
